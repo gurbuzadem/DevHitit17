@@ -49,32 +49,32 @@ namespace DevHitit17
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             //barkod  var mı?
-            StokKarti barkodbul = stokKartiRepository.StokKartiBulBarkod(txtBarkod.Text);
-            if (barkodbul == null)
-            {
-                StokKarti stokKarti = new StokKarti();
-                //stokKarti.pkStokKarti = 5;
-                stokKarti.id = 6;
-                stokKarti.Stokadi = txtStokAdi.Text;
-                stokKarti.barkod = txtBarkod.Text;
+            //StokKarti barkodbul = stokKartiRepository.StokKartiBulBarkod(txtBarkod.Text);
+            //if (barkodbul == null)
+            //{
+            //    StokKarti stokKarti = new StokKarti();
+            //    //stokKarti.pkStokKarti = 5;
+            //    stokKarti.id = 6;
+            //    stokKarti.Stokadi = txtStokAdi.Text;
+            //    stokKarti.barkod = txtBarkod.Text;
 
-                _work.StokKarti.Add(stokKarti);
-                _work.Complete();
+            //    _work.StokKarti.Add(stokKarti);
+            //    _work.Complete();
 
-                //string yeni_id = stokKarti.id.ToString();
-                string yeni_id2 = stokKarti.pkStokKarti.ToString();
-            }
-            else
-            {
-                //barkodbul.id = 1;
-                ///barkodbul.pkStokKarti = 1;
-                barkodbul.Stokadi = txtStokAdi.Text;
-                //_work.StokKarti.Add(barkodbul);
-                //_work._context.Entry(barkodbul).State = System.Data.Entity.EntityState.Modified;
-                _work._context.StokKartlari.Attach(barkodbul);
-                int sonuc = _work.Complete();
-                //_work.Update(barkodbul);
-            }
+            //    //string yeni_id = stokKarti.id.ToString();
+            //    string yeni_id2 = stokKarti.pkStokKarti.ToString();
+            //}
+            //else
+            //{
+            //    //barkodbul.id = 1;
+            //    ///barkodbul.pkStokKarti = 1;
+            //    barkodbul.Stokadi = txtStokAdi.Text;
+            //    //_work.StokKarti.Add(barkodbul);
+            //    //_work._context.Entry(barkodbul).State = System.Data.Entity.EntityState.Modified;
+            //    _work._context.StokKartlari.Attach(barkodbul);
+            //    int sonuc = _work.Complete();
+            //    //_work.Update(barkodbul);
+            //}
 
             Stoklar();
         }
@@ -114,18 +114,30 @@ namespace DevHitit17
             return table;
         }
 
+        void StokDuzenle()
+        {
+            int i = gridView1.FocusedRowHandle;
+            if (i < 0) return;
+
+            DataRow dr = gridView1.GetDataRow(i);
+            int id = int.Parse(dr["pkStokKarti"].ToString());
+
+            fStokKarti stokKarti = new fStokKarti(id);
+            stokKarti.ShowDialog();
+        }
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            if (gridView1.FocusedRowHandle < 0) return;
+            StokDuzenle();
+            //if (gridView1.FocusedRowHandle < 0) return;
 
-            DataRow dr =
-            gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            string id = dr["pkStokKarti"].ToString();
-            string barkod = dr["barkod"].ToString();
-            string stokadi = dr["stokadi"].ToString();
+            //DataRow dr =
+            //gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            //string id = dr["pkStokKarti"].ToString();
+            //string barkod = dr["barkod"].ToString();
+            //string stokadi = dr["stokadi"].ToString();
 
-            txtBarkod.Text = barkod;
-            txtStokAdi.Text = stokadi;
+            //txtBarkod.Text = barkod;
+            //txtStokAdi.Text = stokadi;
         }
 
         private void ucStokListesi_Load(object sender, EventArgs e)
@@ -152,14 +164,7 @@ namespace DevHitit17
 
         private void stokKArtıToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int i = gridView1.FocusedRowHandle;
-            if (i < 0) return;
-
-            DataRow dr = gridView1.GetDataRow(i);
-            int id = int.Parse(dr["pkStokKarti"].ToString());
-
-            fStokKarti stokKarti = new fStokKarti(id);
-            stokKarti.ShowDialog();
+            StokDuzenle();
         }
 
         private void stokHareketleriToolStripMenuItem_Click(object sender, EventArgs e)

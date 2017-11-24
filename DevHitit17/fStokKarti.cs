@@ -27,6 +27,8 @@ namespace DevHitit17
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            if (txtBarkod.Text == "0") return;
+
             StokKarti barkodbul = stokKartiRepository.StokKartiBulBarkod(txtBarkod.Text);
             if (barkodbul == null)
             {

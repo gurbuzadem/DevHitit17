@@ -32,13 +32,13 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBICariListesi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel = new DevExpress.XtraEditors.PanelControl();
-            this.barBICariListesi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Panel)).BeginInit();
             this.SuspendLayout();
@@ -53,17 +53,19 @@
             this.barButtonItem3,
             this.barBICariListesi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(758, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(884, 179);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Stok Listesi";
             this.barButtonItem1.Id = 1;
+            this.barButtonItem1.ImageOptions.LargeImage = global::DevHitit17.Properties.Resources.stoklistesi_32x32;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -81,6 +83,14 @@
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // barBICariListesi
+            // 
+            this.barBICariListesi.Caption = "Cari Listesi";
+            this.barBICariListesi.Id = 4;
+            this.barBICariListesi.ImageOptions.LargeImage = global::DevHitit17.Properties.Resources.fisdetayi1_32x32;
+            this.barBICariListesi.Name = "barBICariListesi";
+            this.barBICariListesi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBICariListesi_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -95,7 +105,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.barBICariListesi);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Kartlar";
             // 
             // ribbonPageGroup2
             // 
@@ -112,36 +122,31 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 526);
+            this.panel1.Location = new System.Drawing.Point(0, 648);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 40);
+            this.panel1.Size = new System.Drawing.Size(884, 49);
             this.panel1.TabIndex = 2;
             // 
             // Panel
             // 
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel.Location = new System.Drawing.Point(0, 143);
+            this.Panel.Location = new System.Drawing.Point(0, 179);
+            this.Panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(758, 383);
+            this.Panel.Size = new System.Drawing.Size(884, 469);
             this.Panel.TabIndex = 6;
-            // 
-            // barBICariListesi
-            // 
-            this.barBICariListesi.Caption = "Cari Listesi";
-            this.barBICariListesi.Id = 4;
-            this.barBICariListesi.Name = "barBICariListesi";
-            this.barBICariListesi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBICariListesi_ItemClick);
             // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 566);
+            this.ClientSize = new System.Drawing.Size(884, 697);
             this.Controls.Add(this.Panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ribbonControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Hitit-Express ";

@@ -9,13 +9,14 @@ using System.Data.Entity;
 
 namespace DevHitit17Database.Models.CariModul
 {
-    [Table("CariKarti")]
-    public class CariKarti
+    [Table("Firmalar")]
+    public class Firmalar
     {
         [Key]
-        public int id { get; set; }
-        public int pkCariKarti { get; set; }
-        public string CariAdi { get; set; }
-        public string KimlikNo { get; set; }
+        //public int id { get; set; }
+        public int pkFirma { get; set; }
+        public string Firmaadi { get; set; }
+        public string Yetkili { get; set; }
+        //public FirmaGruplari fkFirmaGruplari { get; set; }
     }
 }

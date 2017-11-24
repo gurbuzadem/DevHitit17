@@ -14,7 +14,7 @@ namespace DevHitit17Database
 {
     public class DatabaseEntities : DbContext
     {
-        public DbSet<CariKarti> Cariler { get; set; }
+        public DbSet<Firmalar> Cariler { get; set; }
         //public DbSet<Personeller> Personeller { get; set; }
         //public DbSet<Kurum> Kurumlar { get; set; }
         //public DbSet<Yonlendiren> Yonlendirenler { get; set; }

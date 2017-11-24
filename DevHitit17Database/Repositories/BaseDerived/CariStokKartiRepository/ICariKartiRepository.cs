@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DevHitit17Database.Repositories.BaseDerived.CariStokKartiRepository
 {
-    public interface ICariKartiRepository: IRepository<CariKarti>
+    public interface ICariKartiRepository: IRepository<Firmalar>
     {
-        Task<CariKarti> CariKartiBulKimlikNoAsync(string kimlikNo);
-        Task<CariKarti> CariKartiBulKimlikPinNoAsync(string kimlikPinNo);
+        Task<Firmalar> CariKartiBulKimlikNoAsync(string Firmaadi);
+        Task<Firmalar> CariKartiBulKimlikPinNoAsync(string Yetkili);
     }
 }

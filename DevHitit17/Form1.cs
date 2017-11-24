@@ -37,34 +37,49 @@ namespace DevHitit17
             //barButtonItem1_ItemClick(sender, null);
             barButtonItem1.PerformClick();
         }
-        ucStokListesi _ucstokListesi;
-        private ucStokListesi ucstokListesi
+        ucStokListesi _StokListesi;
+        private ucStokListesi StokListesi
         {
             get
             {
-                if(_ucstokListesi==null)
-                    _ucstokListesi = new ucStokListesi();
-                return _ucstokListesi;
+                if(_StokListesi == null)
+                    _StokListesi = new ucStokListesi();
+                return _StokListesi;
             }
             set
             {
-                _ucstokListesi = value;
+                _StokListesi = value;
+            }
+        }
+
+        ucCariListesi _CariListesi;
+        private ucCariListesi CariListesi
+        {
+            get
+            {
+                if (_CariListesi == null)
+                    _CariListesi = new ucCariListesi();
+                return _CariListesi;
+            }
+            set
+            {
+                _CariListesi = value;
             }
         }
 
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Panel.Controls.Add(ucstokListesi);
-            ucstokListesi.Dock = System.Windows.Forms.DockStyle.Fill;//DevExpress.Utils.
-            ucstokListesi.Show();
-            ucstokListesi.BringToFront();
-            ucstokListesi.VisibleChanged += UcstokListesi_VisibleChanged;
+            Panel.Controls.Add(StokListesi);
+            StokListesi.Dock = System.Windows.Forms.DockStyle.Fill;//DevExpress.Utils.
+            StokListesi.Show();
+            StokListesi.BringToFront();
+            StokListesi.VisibleChanged += UcstokListesi_VisibleChanged;
         }
 
         private void UcstokListesi_VisibleChanged(object sender, EventArgs e)
         {
-            ucstokListesi = null;
+            StokListesi = null;
             //throw new NotImplementedException();
         }
 
@@ -112,6 +127,21 @@ namespace DevHitit17
         {
             RaporGoster raporGoster = new RaporGoster();
             raporGoster.ShowDialog();
+        }
+
+        private void barBICariListesi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Panel.Controls.Add(CariListesi);
+            CariListesi.Dock = System.Windows.Forms.DockStyle.Fill;
+            CariListesi.Show();
+            CariListesi.BringToFront();
+            CariListesi.VisibleChanged += CariListesi_VisibleChanged;
+        }
+
+        private void CariListesi_VisibleChanged(object sender, EventArgs e)
+        {
+            CariListesi = null;
+            //throw new NotImplementedException();
         }
     }
 }

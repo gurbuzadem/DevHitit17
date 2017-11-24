@@ -13,7 +13,10 @@ namespace DevHitit17Database.Repositories.BaseDerived.CariStokKartiRepository
         public CariKartiRepository(DatabaseEntities context) : base(context)
         {
         }
-
+        public Firmalar FirmaKartiBulBarkod(string CariAdi)
+        {
+            return FindOne(s => s.Firmaadi == CariAdi);
+        }
         public async Task<Firmalar> CariKartiBulKimlikNoAsync(string CariAdi)
         {
             return await FindOneAsync(h => h.Firmaadi == CariAdi);

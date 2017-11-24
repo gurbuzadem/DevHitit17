@@ -8,41 +8,52 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using DevHitit17Database.Models.StokModul;
-using DevHitit17Database.Repositories.BaseDerived.StokKartiRepositories;
 using DevHitit17Database;
+using DevHitit17Database.Repositories.BaseDerived.CariStokKartiRepository;
+using DevHitit17Database.Models.CariModul;
 
 namespace DevHitit17
 {
     public partial class fCariKarti : fBaseForm
     {
-        StokKartiRepository stokKartiRepository;
+        CariKartiRepository cariKartiRepository;
         int _cari_id;
         public fCariKarti(int cari_id)
         {
             InitializeComponent();
             _cari_id = cari_id;
-            stokKartiRepository = new StokKartiRepository(_work._context);
+            cariKartiRepository = new  CariKartiRepository(_work._context);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (txtOzelKod.Text == "0") return;
 
-            StokKarti barkodbul = stokKartiRepository.StokKartiBulBarkod(txtOzelKod.Text);
+            Firmalar barkodbul = cariKartiRepository.FirmaKartiBulBarkod(txtOzelKod.Text);
             if (barkodbul == null)
             {
-                StokKarti stokKarti = new StokKarti();
-                stokKarti.Stokadi = txtCariAdi.Text;
-                stokKarti.Barcode = txtOzelKod.Text;
+                Firmalar stokKarti = new Firmalar();
+                //stokKarti.OzelKod = "1001";
+                stokKarti.Firmaadi = txtCariAdi.Text;
+                stokKarti.Yetkili = txtOzelKod.Text;
 
-                _work.StokKarti.Add(stokKarti);
-                _work.Complete();
+                _work.CariKarti.Add(stokKarti);
+                try
+                {
+                    int sonuc = _work.Complete();
+                }
+                catch (Exception EXP)
+                {
+                    //_work.hatamesaji
+                    MessageBox.Show(EXP.Message);
+                    //throw;
+                }
+               
 
-                string yeni_id2 = stokKarti.pkStokKarti.ToString();
+                string yeni_id2 = stokKarti.pkFirma.ToString();
             }
             else
-                MessageBox.Show("Stok Zaten Var");
+                MessageBox.Show("Cari Zaten Var");
 
         }
 
@@ -52,15 +63,15 @@ namespace DevHitit17
             //DataTable dt = ToDataTable<StokKarti>(stoklistesiara);
 
             
-            StokKarti stokkartiData = _work.StokKarti.FindOne(s => s.pkStokKarti== _cari_id);
+            Firmalar stokkartiData = _work.CariKarti.FindOne(s => s.pkFirma== _cari_id);
             if (stokkartiData == null)
             {
-                ; MessageBox.Show("Stok Bulunamadı");
+                ; MessageBox.Show("Cari Kart Bulunamadı");
             }
             else
             {
-                txtCariAdi.Text = stokkartiData.Stokadi;
-                txtOzelKod.Text = stokkartiData.Barcode;
+                txtCariAdi.Text = stokkartiData.Firmaadi;
+                txtOzelKod.Text = stokkartiData.Yetkili;
             }
         }
     }

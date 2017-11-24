@@ -21,7 +21,6 @@ namespace DevHitit17
         {
             InitializeComponent();
             _work = new UnitOfWork(new DatabaseEntities());
-
             //stokKartiRepository = new StokKartiRepository(_work._context);
         }
     }

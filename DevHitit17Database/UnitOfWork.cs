@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DevHitit17Database.Repositories.BaseDerived.CariStokKartiRepository;
 using DevHitit17Database.Repositories.BaseDerived.HastaKabulRepositories;
 using DevHitit17Database.Repositories.BaseDerived.FaturaRepository;
+using System.Data.Entity.Validation;
 
 namespace DevHitit17Database
 {
@@ -17,6 +18,11 @@ namespace DevHitit17Database
 
         public UnitOfWork(DatabaseEntities context)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException("Context was not supplied");
+            }
+
             _context = context;
 
             //Hasta = new HastaRepository(_context);
@@ -52,13 +58,102 @@ namespace DevHitit17Database
 
         //public IStokKartiRepository StokKarti => throw new NotImplementedException();
 
+        //public override int SaveChanges()
+        //{
+
+        //}
 
 
         public int Complete()
         {
-            return _context.SaveChanges();
+            int sonuc;
+            try
+            {
+                sonuc= _context.SaveChanges();
+            }
+            catch (FieldAccessException e)
+            {
+                string hata = e.Message;
+                //var newException = new FormattedDbEntityValidationException(e);
+                //throw newException;
+                sonuc = 0;
+            }
+            catch (DbEntityValidationException e)
+            {
+                string hata = e.Message;
+                //var newException = new FormattedDbEntityValidationException(e);
+                //throw newException;
+                sonuc = 0;
+            }
+            catch (DataMisalignedException e)
+            {
+                string hata = e.Message;
+                // var newException = new FormattedDbEntityValidationException(e);
+                // throw newException;
+                sonuc = 0;
+            }
+            catch (DbUnexpectedValidationException e)
+            {
+                string hata = e.Message;
+                sonuc = 0;
+                //var newException = new FormattedDbEntityValidationException(e);
+                //throw newException;
+            }
+            catch (Exception e)
+            {
+                string hata = e.Message;
+                sonuc = 0;
+
+                throw new ArgumentNullException(e.Message);//"Context was not supplied");
+
+                //var newException = new FormattedDbEntityValidationException(e);
+                //throw newException;
+
+                //string h = ((System.Data.Entity.Validation.DbEntityValidationException)FieldAccessException).Message.ToString();
+                //((System.Data.Entity.Validation.DbEntityValidationException)$exception).EntityValidationErrors;
+            }
+            return sonuc;
         }
 
+        public class FormattedDbEntityValidationException : Exception
+        {
+            public FormattedDbEntityValidationException(DbEntityValidationException innerException) :
+                base(null, innerException)
+            {
+            }
+
+            public override string Message
+            {
+                get
+                {
+                    var innerException = InnerException as DbEntityValidationException;
+                    if (innerException != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        sb.AppendLine();
+                        sb.AppendLine();
+                        foreach (var eve in innerException.EntityValidationErrors)
+                        {
+                            sb.AppendLine(string.Format("- Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().FullName, eve.Entry.State));
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                sb.AppendLine(string.Format("-- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                                    ve.PropertyName,
+                                    eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                                    ve.ErrorMessage));
+                            }
+                        }
+                        sb.AppendLine();
+
+                        return sb.ToString();
+                    }
+
+                    return base.Message;
+                }
+            }
+        }
         //public int Update(StokKarti barkodbul)
         //{
 

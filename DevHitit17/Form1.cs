@@ -35,7 +35,8 @@ namespace DevHitit17
 
 
             //barButtonItem1_ItemClick(sender, null);
-            barButtonItem1.PerformClick();
+            //barButtonItem1.PerformClick();
+            barBICariListesi.PerformClick();
         }
         ucStokListesi _StokListesi;
         private ucStokListesi StokListesi

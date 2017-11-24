@@ -26,7 +26,7 @@ namespace DevHitit17
             cariKartiRepository = new  CariKartiRepository(_work._context);
         }
 
-        private void Stoklar()
+        private void Cariler()
         {
             //bool apiden_verigetir = false;
             DataTable dt;
@@ -77,7 +77,7 @@ namespace DevHitit17
             //    //_work.Update(barkodbul);
             //}
 
-            Stoklar();
+            Cariler();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -121,11 +121,12 @@ namespace DevHitit17
             if (i < 0) return;
 
             DataRow dr = gridView1.GetDataRow(i);
-            int id = int.Parse(dr["pkStokKarti"].ToString());
+            int id = int.Parse(dr["pkFirma"].ToString());
 
-            fStokKarti stokKarti = new fStokKarti(id);
+            fCariKarti stokKarti = new fCariKarti(id);
             stokKarti.ShowDialog();
         }
+
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
             StokDuzenle();
@@ -143,15 +144,15 @@ namespace DevHitit17
 
         private void ucStokListesi_Load(object sender, EventArgs e)
         {
-            Stoklar();
+            Cariler();
         }
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
-            fStokKarti stokKarti = new fStokKarti(0);
+            fCariKarti stokKarti = new fCariKarti(0);
             stokKarti.ShowDialog();
 
-            Stoklar();
+            Cariler();
         }
 
         private void textEdit1_EditValueChanged(object sender, EventArgs e)
@@ -174,7 +175,7 @@ namespace DevHitit17
             if (i < 0) return;
 
             DataRow dr = gridView1.GetDataRow(i);
-            int id = int.Parse(dr["pkStokKarti"].ToString());
+            int id = int.Parse(dr["pkFirma"].ToString());
 
             fStokKarti stokKarti = new fStokKarti(id);
             stokKarti.ShowDialog();

@@ -34,7 +34,7 @@ namespace DevHitit17
             {
                 StokKarti stokKarti = new StokKarti();
                 stokKarti.Stokadi = txtStokAdi.Text;
-                stokKarti.barkod = txtBarkod.Text;
+                stokKarti.Barcode = txtBarkod.Text;
 
                 _work.StokKarti.Add(stokKarti);
                 _work.Complete();
@@ -60,7 +60,7 @@ namespace DevHitit17
             else
             {
                 txtStokAdi.Text = stokkartiData.Stokadi;
-                txtBarkod.Text = stokkartiData.barkod;
+                txtBarkod.Text = stokkartiData.Barcode;
             }
         }
     }

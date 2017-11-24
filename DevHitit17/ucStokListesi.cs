@@ -29,7 +29,7 @@ namespace DevHitit17
 
         private void Stoklar()
         {
-            bool apiden_verigetir = true;
+            bool apiden_verigetir = false;
             DataTable dt;
             if (apiden_verigetir)
             {
@@ -48,6 +48,8 @@ namespace DevHitit17
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            StokDuzenle();
+
             //barkod  var mı?
             //StokKarti barkodbul = stokKartiRepository.StokKartiBulBarkod(txtBarkod.Text);
             //if (barkodbul == null)
@@ -155,7 +157,7 @@ namespace DevHitit17
 
         private void textEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            var stoklistesiara = _work.StokKarti.Find(p => p.Stokadi.Contains(textEdit1.Text));
+            var stoklistesiara = _work.StokKarti.Find(p => p.Stokadi.Contains(textEdit1.Text)).Take(20);
 
             DataTable dt = ToDataTable<StokKarti>(stoklistesiara);
 

@@ -16,17 +16,17 @@ namespace DevHitit17Database.Repositories.BaseDerived.StokKartiRepositories
         }
         public StokKarti StokKartiBulBarkod(string Barkod)
         {
-            return  FindOne(s => s.barkod == Barkod);
+            return  FindOne(s => s.Barcode == Barkod);
         }
 
         public async Task<StokKarti> StokKartiBulBarkodAsync(string Barkod)
         {
-            return await FindOneAsync(s => s.barkod == Barkod);
+            return await FindOneAsync(s => s.Barcode == Barkod);
         }
 
         public async Task<StokKarti> StokKartiBulKoduAsync(string Kodu)
         {
-            return await FindOneAsync(s => s.barkod == Kodu);
+            return await FindOneAsync(s => s.Barcode == Kodu);
         }
     }
 }

@@ -61,10 +61,10 @@
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 356);
+            this.panel2.Location = new System.Drawing.Point(0, 306);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(795, 90);
+            this.panel2.Size = new System.Drawing.Size(795, 140);
             this.panel2.TabIndex = 5;
             // 
             // simpleButton2
@@ -106,7 +106,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(795, 290);
+            this.gridControl1.Size = new System.Drawing.Size(795, 240);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -150,6 +150,7 @@
             this.gridColumn5});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -176,7 +177,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "barkod";
-            this.gridColumn3.FieldName = "barkod";
+            this.gridColumn3.FieldName = "Barcode";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -192,7 +193,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Aciklama";
-            this.gridColumn5.FieldName = "Aciklama";
+            this.gridColumn5.FieldName = "EtiketAciklama";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;

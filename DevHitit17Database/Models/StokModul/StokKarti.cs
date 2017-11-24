@@ -17,15 +17,15 @@ namespace DevHitit17Database.Models.StokModul
 
         }
         //[Key]
-        public int id { get; set; }
+        //public int id { get; set; }
         [Key]
         public int pkStokKarti { get; set; }
 
         [Display(Name = "Ad")]
         public string Stokadi { get; set; }
-        public string barkod { get; set; }
-        public int KdvOrani { get; set; }
+        public string Barcode { get; set; }
+        public double KdvOrani { get; set; }
 
-        public string Aciklama { get; set; }
+        public string EtiketAciklama { get; set; }
     }
 }
